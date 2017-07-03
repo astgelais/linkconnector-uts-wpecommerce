@@ -160,10 +160,8 @@ $items = $purchase_log_object->get_cart_contents();
 /****** initialize javascript array ********/
 
 $order_items = <<<ORDER_ITEMS
-
 <script type="text/javascript">
 var uts_products = new Array();
-
 ORDER_ITEMS;
 
 /****** loop thru cart ********/
@@ -173,25 +171,20 @@ $itemDetails = new wpsc_cart_item($items[$j]->prodid,'','');
 $quantity = $items[$j]->quantity;
 $category = implode(",",$itemDetails->category_list);
 $order_items .= <<<ORDER_ITEMS
-
 uts_products[$j] = new Array(); 
 uts_products[$j][0] = "$itemDetails->sku";
 uts_products[$j][1] = "$itemDetails->product_name";
 uts_products[$j][2] = "$quantity";
 uts_products[$j][3] = "$itemDetails->unit_price";
 uts_products[$j][4] = "$category";
-
 ORDER_ITEMS;
-
 $j++;
 }
 
 /****** close javascript array declaration *****/
 $order_items .= <<<ORDER_ITEMS
-
 </script>
 ORDER_ITEMS;
-
 echo $order_items;
 
 $lc_call = <<<LCCALL
